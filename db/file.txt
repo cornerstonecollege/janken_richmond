@@ -1,0 +1,42 @@
+- Database server installed 
+
+The user was already made.
+
+User: root
+PW:******
+
+DB name : janken
+TABLE : Score
+
+- how to connect
+http://www.dbonline.jp/mysql/connect/index3.html
+
+- login
+mysql -u root -p
+
+[database command which I used this time]
+- db list
+show databases;
+
+- create db
+CREATE DATABASE janken;
+
+- switch to a DB
+use janken;
+
+- create table
+CREATE TABLE Score
+(
+id MEDIUMINT NOT NULL AUTO_INCREMENT,
+name CHAR(50) NOT NULL,
+score varchar(255),
+PRIMARY KEY (id)
+);
+
+SELECT * FROM Score;
+
+INSERT INTO Score 
+(id, name, score)
+VALUES
+("", "John Poul", "20");
+
