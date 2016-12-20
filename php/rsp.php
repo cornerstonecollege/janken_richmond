@@ -5,8 +5,8 @@ if (! isset($_SERVER['HTTP_X_REQUESTED_WITH']) ||
 	die(json_encode(array('status' => "This call is not allowded")));
 }
 # DB
-$con = mysqli_connect('192.168.0.21','root@localhost','admin',"janken") or die("Error " . mysqli_error($connection));
-$sql = "select * from Score";
+$connection = mysqli_connect('127.0.0.1','root','admin',"janken") or die("Error " . mysqli_error($connection));
+$sql = "select * from score";
 $result = mysqli_query($connection, $sql) or die("Error in Selecting " . mysqli_error($connection));
 $emparray = array();
 
@@ -17,6 +17,6 @@ $emparray = array();
 
  echo json_encode($emparray);
 
- //close the db connection
+ # close the db connection
  mysqli_close($connection);
 ?>
