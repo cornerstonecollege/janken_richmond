@@ -1,3 +1,22 @@
-#divJanken {
+.centered {
     text-align: center;
+}
+
+#divComputerChoice {
+    margin-top: 10%;
+    margin-bottom: 75px;
+}
+
+.imgSize200 {
+    width: 200px;
+    height: 200px;
+}
+
+.imgSize300 {
+    width: 300px;
+    height: 300px;
+}
+
+.divScore {
+    margin-bottom: 30px;
 }

@@ -1,46 +1,50 @@
-var button = document.getElementById("botan");
+var score = 0;
 
-button.onclick = function janken() {
+var compare = function (choice1, choice2) {
+    if (choice1 === choice2) {
+        return "tie";
+    } else if (choice1 === "rock") {
+        if (choice2 === "scissors") {
+            score += 100;
+        } else {
+            score -= 100;
+        }
+    } else if (choice1 === "paper") {
+        if (choice2 === "rock") {
+            score += 100;
+        } else {
+            score -= 100;
+        }
+    } else if (choice1 === "scissors") {
+        if (choice2 === "paper") {
+            score += 100;
+        } else {
+            score -= 100;
+        }
+    }
+}
 
-    var playerScore = 0;
+function rps(choice) {
+    while (-300 < score && score < 300) {
 
-    while (-200 < playerScore && playerScore < 200) {
-        var playerChoice = prompt("rock, paper, scissors?");
+        var playerChoice = choice;
 
         var computerChoice = Math.random();
-        if (0 < computerChoice < 0.3) {
+        if (computerChoice < 0.34) {
             computerChoice = "rock";
-        } else if (0.34 < computerChoice < 0.66) {
+        } else if (computerChoice < 0.67) {
             computerChoice = "paper";
         } else {
             computerChoice = "scissors";
         }
-
-        var compare = function (choice1, choice2) {
-            if (choice1 === choice2) {
-                return "tie";
-            } else if (choice1 === "rock") {
-                if (choice2 === "scissors") {
-                    playerScore += 100;
-                } else {
-                    playerScore -= 100;
-                }
-            } else if (choice1 === "paper") {
-                if (choice2 === "rock") {
-                    playerScore += 100;
-                } else {
-                    playerScore -= 100;
-                }
-            } else if (choice1 === "scissors") {
-                if (choice2 === "paper") {
-                    playerScore += 100;
-                } else {
-                    playerScore -= 100;
-                }
-            }
-        }
+        document.getElementById("imgComputer").src = "img/" + computerChoice + ".jpg";
         compare(playerChoice, computerChoice);
-        console.log(playerScore);
+        document.getElementById("scoreBoard").innerHTML = "<h1>SCORE: " + score + "</h1>";
+        if (score == 300) {
+            document.getElementById("scoreBoard").innerHTML = "<h1>WIN</h1>";
+        } else if (score == -300) {
+            document.getElementById("scoreBoard").innerHTML = "<h1>LOSE</h1>";
+        }
+        break;
     }
-    document.getElementById("owari").innerHTML = "<h1>END</h1>";
 }
