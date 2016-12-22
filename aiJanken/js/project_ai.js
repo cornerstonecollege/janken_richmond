@@ -1,14 +1,10 @@
 var score = 0;
 function game(personAnswer){
-  while(-300 < score && score < 300){// -200 to 200
+  while(-300 < score && score < 300){
     var result = "";
     var janken = ["Rock","Scissors","Pepar"];
-    var computerAnswer = janken[Math.floor( Math.random() * janken.length)];
-    document.getElementById("imgComputer").src = "img/" + computerAnswer + ".png";
-    if(personAnswer == null){
-      result = ("done");
-      break;
-    }
+    var computerAnswer = janken[Math.floor( Math.random() * janken.length)];//Computer pic one of those from array
+    document.getElementById("imgComputer").src = "img/" + computerAnswer + ".png";//Show image of computer's answer
     if(personAnswer == computerAnswer){
       result = "Even";
     }
@@ -46,13 +42,7 @@ function game(personAnswer){
     document.getElementById("Score").innerHTML = "<p>TotalScore : " + score + "</p>";
     break;
   }
-  if(-300 == score || score == 300){
+  if(-300 == score || score == 300){// if score is 300 or -300 game end
     document.getElementById("End").innerHTML = "<p>Game End</p>";
   }
 }
-
-
-
-// console.log("TotalScore is " + score)
-// console.log("You are " + result)
-// document.getElementById("End").innerHTML = "<p>END</p>";
