@@ -19,31 +19,31 @@ var compare = function(playerChoice, computerChoice) {
 }
 
 var caliculator = function(result) {
- totalScore = result === "win" ? totalScore + 100 : totalScore - 100;
+  totalScore = result === "win" ? totalScore + 100 : totalScore - 100;
 }
 
 function makeComputerChoice() {
   var computerChoice = Math.random();
   if (computerChoice < 0.34) {
-  	computerChoice = "rock";
+    computerChoice = "rock";
   } else if(computerChoice <= 0.67) {
-  	computerChoice = "paper";
+    computerChoice = "paper";
   } else {
-  	computerChoice = "scissors";
+    computerChoice = "scissors";
   }
   $("#computer").attr("src", "img/" + computerChoice + ".png");
   return computerChoice;
 }
 
 $(document).ready(function() {
-    $(".imgContain").click(function() {
-      if (totalScore < 100) {
-        var playerId = this.id;
-        var result = compare(playerId, makeComputerChoice());
-        console.log(totalScore);
-        caliculator(result);
-      } else {
-        $("#resultText").text("finish");
-      }
-    });
+  $(".imgContain").click(function() {
+    if (totalScore < 100) {
+      var playerId = this.id;
+      var result = compare(playerId, makeComputerChoice());
+      console.log(totalScore);
+      caliculator(result);
+    } else {
+      $("#resultText").text("finish");
+    }
+  });
 });
