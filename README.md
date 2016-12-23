@@ -9,6 +9,7 @@ This game has three funtions.
 ### Tech
 * HTML
 * CSS
+* jQuery
 * Javascript
 * bootstrap
 * php
