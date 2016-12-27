@@ -7,7 +7,9 @@ var score = 0;
             var person = prompt("Rock? Scissors? Pepar?");
             var j = ["Rock","Scissors","Pepar"];
             var com = j[ Math.floor( Math.random() * j.length ) ] ;
+            console.log(com);
 
+                 break;
               if (person == "B"){
                 result = ("done")
                  break;
