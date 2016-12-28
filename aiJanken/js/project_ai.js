@@ -35,7 +35,7 @@ function game(personAnswer){
     if(result == "Win"){
       score = score + 100;
     }
-    if (result == "Lose"){
+    if(result == "Lose"){
       score = score - 100;
     }
     document.getElementById("Result").innerHTML = "<p>" + personAnswer + "!! " + result + "</p>";
@@ -51,18 +51,18 @@ var data = [2, 1, 5, 3, 6];
 var bucket = [];
 var sortBucket = [];
 var max = 600;
-for (var i=0; i<max; i++){// create max numbert of bucket
+for(var i = 0; i < max; i++){// create max numbert of bucket
   bucket[i] = 0;// input 0
 }
-for (var i=0; i<bucket.length; i++) {
-  for (var j=0; j<data.length; j++) {
+for(var i=0; i<bucket.length; i++) {
+  for(var j=0; j<data.length; j++) {
     if( i == data[j]){
       bucket[i] = data[j];
     }
   }
 }
 console.log("bucket : " + bucket);
-for (var i=0; i<bucket.length; i++) {
+for(var i=0; i<bucket.length; i++) {
   if(bucket[i] != 0){
     sortBucket.push(bucket[i]);
   }
