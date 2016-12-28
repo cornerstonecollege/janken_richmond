@@ -46,3 +46,25 @@ function game(personAnswer){
     document.getElementById("End").innerHTML = "<p>Game End</p>";
   }
 }
+
+var data = [2, 1, 5, 3, 6];
+var bucket = [];
+var sortBucket = [];
+var max = 600;
+for (var i=0; i<max; i++){// create max numbert of bucket
+  bucket[i] = 0;// input 0
+}
+for (var i=0; i<bucket.length; i++) {
+  for (var j=0; j<data.length; j++) {
+    if( i == data[j]){
+      bucket[i] = data[j];
+    }
+  }
+}
+console.log("bucket : " + bucket);
+for (var i=0; i<bucket.length; i++) {
+  if(bucket[i] != 0){
+    sortBucket.push(bucket[i]);
+  }
+}
+console.log("sortBucket : " + sortBucket);
