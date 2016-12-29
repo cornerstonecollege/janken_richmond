@@ -16,5 +16,8 @@ This game has three funtions.
 * mySQL
 
 ### Todos
-- make sql(insert)
-- connect all function togheter
+- [x] make sql(insert)
+- [ ] connect all function togheter
+
+### Due
+January 3rd
