@@ -18,6 +18,7 @@ This game has three funtions.
 ### Todos
 - [x] make sql(insert)
 - [ ] connect all function togheter
+- [ ] think about deadlock
 
 ### Due
 January 3rd
