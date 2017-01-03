@@ -4,7 +4,7 @@ This game has three funtions.
 
 - battle
 - Register your high score
-- View best 10 score
+- show the best 10 score in the server
 
 ### Tech
 * HTML
@@ -14,7 +14,12 @@ This game has three funtions.
 * bootstrap
 * php
 * mySQL
+* ajax
 
 ### Todos
-- make sql(insert)
-- connect all function togheter
+- [x] make sql(insert)
+- [ ] connect all function togheter
+- [ ] think about deadlock
+
+### Due
+January 3rd
