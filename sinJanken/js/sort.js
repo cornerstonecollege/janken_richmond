@@ -143,9 +143,10 @@ Sort.Main.prototype = {
             var result = [];
             var slice1 = leftSlice.slice(0, leftSlice.length / 2);
             var slice2 = leftSlice.slice(leftSlice.length / 2, leftSlice.length);
-            if (slice1.length <= 2) { // conpair slice[0] & slice[1]
-                slice1[0] < slice1[1] ? result.push(slice1[0], slice1[1]) : result.push(slice1[1], slice1[0]);
-                slice2[0] < slice2[1] ? result.push(slice2[0], slice2[1]) : result.push(slice2[1], slice2[0]);
+                console.log(slice1.length);
+            if (slice1.length <= 2) { 
+                slice1[0]["score"] < slice1[1]["score"] ? result.push(slice1[0], slice1[1]) : result.push(slice1[1], slice1[0]);
+                slice2[0]["score"] < slice2[1]["score"] ? result.push(slice2[0], slice2[1]) : result.push(slice2[1], slice2[0]);
                 leftSlice = result;
                 return leftSlice;
             }
@@ -156,17 +157,18 @@ Sort.Main.prototype = {
             var slice1 = rightSlice.slice(0, rightSlice.length / 2);
             var slice2 = rightSlice.slice(rightSlice.length / 2, rightSlice.length);
             if (slice1.length <= 2) {
-                slice1[0] < slice1[1] ? result.push(slice1[0], slice1[1]) : result.push(slice1[1], slice1[0]);
-                slice2[0] < slice2[1] ? result.push(slice2[0], slice2[1]) : result.push(slice2[1], slice2[0]);
+                slice1[0]["score"] < slice1[1]["score"] ? result.push(slice1[0], slice1[1]) : result.push(slice1[1], slice1[0]);
+                slice2[0]["score"] < slice2[1]["score"] ? result.push(slice2[0], slice2[1]) : result.push(slice2[1], slice2[0]);
                 rightSlice = result;
                 return rightSlice;
             }
         }
+
         var left = mergeSortLeft();
         var right = mergeSortRight();
         var sortData = [];
         while (left.length > 0 && right.length > 0) { //if both.length are not 0, conpair left[0] &right[0]
-            if (left[0] < right[0]) {
+            if (left[0]["score"] < right[0]["score"]) {
                 sortData.push(left.shift()); //add left[0] to sortData[] & delete left[0]
             } else {
                 sortData.push(right.shift()); //add right[0] to sortData[] & delete right[0]
@@ -183,6 +185,27 @@ Sort.Main.prototype = {
             }
         }   
         this.CreateDomTable(sortData);
+    },
+
+    BucketSort:function(data){
+        var bucket = [];
+        var sortData = [];
+        var max = 11; //number of buckets
+        for (var i = 0; i < max; i++) { // create max numbert of buckets
+            bucket[i] = "";
+        }
+        for (var i = 0; i < bucket.length; i++) {
+            for (var j = 0; j < data.length; j++) {
+                if (i == data[j]) {
+                    bucket[i] = data[j];
+                }
+            }
+        }
+        for (var i = 0; i < bucket.length; i++) {
+            if (bucket[i] != "") {
+                sortData.push(bucket[i]);
+            }
+        }
     },
 
     CreateDomTable:function(data){

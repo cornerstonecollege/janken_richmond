@@ -104,6 +104,11 @@ $(function() {
             sort.QuickSort(data);
         });
     });
+    $("#btnBucket").on("click", function(){
+        $.getJSON(urlRsp, function(data){
+            sort.BucketSort(data);
+        });
+    });
     $("#btnMerge").on("click", function(){
         $.getJSON(urlRsp, function(data){
             sort.MergeSort(data);
