@@ -73,7 +73,7 @@ function bubbleSort(numbers) {
 
 
 /* ================================ */
-/* # Ridax Sort
+/* # Radix Sort
 http://www.ics.kagoshima-u.ac.jp/~fuchida/edu/algorithm/sort-algorithm/radix-sort.html
 http://110chang.com/knowledge/javascript-sort-argorythm/
 ## Premise
@@ -145,7 +145,7 @@ Quicksort has very few data comparisons and exchanges, and sorts random data eff
 
 ## Flow
 1. At first, pick a pivot.
-2. Searching data from the start to over pivot, after that Searching data form the end to less-than pivot. 
+2. Searching data from the start to over pivot, after that Searching data form the end to less-than pivot.
    If data is found, exchange each.
 3. It lasts until cross the search line, divide into two in the spot.
 Repeat above these things, it will sort by ascending order in the end.
@@ -208,7 +208,7 @@ function partition(data, i, j, x){
         l++;
         r--;
     }
-    return l; // return the number of the cross 
+    return l; // return the number of the cross
 }
 
 function swap(items, firstIndex, secondIndex){
