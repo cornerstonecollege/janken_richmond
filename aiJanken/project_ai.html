@@ -43,13 +43,14 @@
           <span id="Score1" name="janken_score"></span>
         </div>
         <!-- In order to send to the server -->
-        <form action="http://192.168.0.28/php/insertrsp.php" method="post">
+        <div id="mainform">
             <div class="form-group">
                 <input id="yourName2" type="hidden" name="janken_name" value="">
                 <input id="Score2" type="hidden" name="janken_score" value="">
-                <button type="submit" class="btn btn-default">Send</button>
+                <button id="btnsubmit" class="btn btn-default">Send</button>
             </div>
-        </form>
+            <span id="result"></span>
+        </div>
         <br />
         <div class="col-md-12">
             <div id="End"></div>

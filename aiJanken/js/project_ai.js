@@ -74,7 +74,7 @@ function game(personAnswer) {
 // view score
 $(function() {
     $("#load").on("click", function() {
-        $.getJSON("http://192.168.0.21/rsp.php", function(data) {
+        $.getJSON("http://192.168.0.15/rsp.php", function(data) {
             for (var i in data) {
                 var tr = $("<tr>");
                 var td_data = $("<td>").text("data[i]".id);
@@ -164,3 +164,28 @@ function btnMerge() {
     console.log("data : " + data);
     console.log("sortData : " + sortData);
 }
+// send name and score
+$(function() {
+    var request;
+    $("#btnsubmit").click(function() {
+        if (request) {
+            request.abort();
+        }
+        var myData = $("#mainform").find("input").serialize();
+        console.log("request : " + request);
+        request = $.ajax({
+            url: 'http://192.168.0.15/php/insertrsp.php',
+            method: "post",
+            data: myData,
+            success: function(result) {
+                $("#result")
+                    .html("Data has sent!!!")
+                    .addClass("bg-success");
+            }
+        });
+        request.fail(function(jqXHR, textStatus, errorThrown) {
+            console.log(jqXHR + " " + textStatus + errorThrown);
+        });
+        event.preventDefault();
+    });
+});
