@@ -18,4 +18,3 @@ if(mysqli_query($connection, $sql)){
 // close connection
 mysqli_close($connection);
 ?>
-
