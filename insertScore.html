@@ -7,44 +7,15 @@
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"
   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
   crossorigin="anonymous"></script>
+  <script src="js/ajax_sample.js"></script>
   </head>
   <body>
     <div>
-      <form id="form1">
+      <form id="target">
         name:<input type="text" name="janken_name" id="janken_name">
         score:<input type="text" name="janken_score" id="janken_score">
         <input type="submit">
       </form>
     </div>
-     <!-- http://192.168.0.15/rsp/insertrsp.php/?janken_name="test"&janken_score="200;" -->
-    <!-- <form data-abide id="form1">
-        <input type="text" id="text1">
-        <button type="submit" id="submit-button">submit</button>
-    </form> -->
-
-    <script>
-    $('#form1').submit(function(event) {
-      var name = $("#janken_name").val();
-      var score = $("#janken_score").val();
-      var dataString = "janken_name=" + name + "&janken_score=" + score;
-        // submitをキャンセル
-        event.preventDefault();
-         // Ajax
-         $.ajax({
-           url: 'http://192.168.0.15/php/insertrsp.php',
-           type:'post',
-           data : dataString,
-           timeout:10000,
-           success: function(data) {
-                   document.write(name , score);
-                   alert(data);
-           },
-           error: function(XMLHttpRequest, textStatus, errorThrown) {
-                  alert("NG");
-           }
-
-         });
-    });
-    </script>
   </body>
 </html>
