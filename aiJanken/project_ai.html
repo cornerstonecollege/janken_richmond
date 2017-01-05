@@ -10,14 +10,13 @@
     <link rel="stylesheet" href="css/project.css">
     <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/project_hannah.js"></script>
+    <script type="text/javascript" src="js/project_ai.js"></script>
 </head>
 
 <body>
     <div class="container">
         <h1>Jyanken Game</h1>
         <h3>Click Start buttom! Rock? Scissors? Pepar?</h3>
-        <button id="btnStart" class="btn btn-default">Start</button>
         <button id="btnEnd" class="btn btn-default">End</button>
         <a href="javascript:location.reload();"><button class="btn btn-default">Reload this page</button></a>
         <div class="row">
@@ -41,15 +40,8 @@
           <span id="yourName1" name="janken_name"></span>
           <span>Score:</span>
           <span id="Score1" name="janken_score"></span>
+          <span id="result"></span>
         </div>
-        <!-- In order to send to the server -->
-        <form action="http://192.168.0.28/php/insertrsp.php" method="post">
-            <div class="form-group">
-                <input id="yourName2" type="hidden" name="janken_name" value="">
-                <input id="Score2" type="hidden" name="janken_score" value="">
-                <button id="send" class="btn btn-default">Send</button>
-            </div>
-        </form>
         <br />
         <div class="col-md-12">
             <div id="End"></div>
