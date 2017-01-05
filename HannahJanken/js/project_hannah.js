@@ -1,26 +1,32 @@
-function name(SaveName) {
+var j_token_val;
+var name;
+var score = 0;
+
+function get_name() {
   if (typeof(Storage) !== "undefined") {
-      localStorage.setItem("lastname", Name);
-      document.getElementById("result").innerHTML = localStorage.getItem("lastname");
+    var existing_name = localStorage.getItem("lastname")
+      if(existing_name){
+        document.getElementById("Result").innerHTML = existing_name;
+        return existing_name;
+      }else{
+        var new_name = prompt("Please enter your name");
+        j_token_val = token();
+         localStorage.setItem("j_token", j_token_val);
+         localStorage.setItem("lastname", new_name);
+         document.getElementById("Result").innerHTML = new_name;
+      }
   } else {
-      document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+      document.getElementById("Result").innerHTML = "Sorry, your browser does not support Web Storage...";
   }
 }
 
-var j_token_val;
-$(function() {
-    if(!localStorage.getItem("j_token")){
-        var j_token_val = token();
-        localStorage.setItem("j_token", j_token_val);
-    }else{
-        j_token_val = localStorage.getItem("j_token", j_token_val);
-    }
-    // if (typeof(Storage) === "undefined") {
-    //     alert("Sorry! No Web Storage support");
-    // }
-    console.log(j_token_val);
-});
-
+// make token
+var rand = function() {
+    return Math.random().toString(36).substr(2);
+};
+var token = function() {
+    return rand() + rand();
+};
 
 $(function() {
     $("#btnEnd").hide();
@@ -32,9 +38,9 @@ $(function() {
         document.getElementById("Score1").innerHTML = "";
         document.getElementById("Score2").value = "";
         document.getElementById("End").innerHTML = "";
-        var Name = prompt("Please enter your name", "ai");
-        document.getElementById("yourName1").innerHTML = Name;
-        document.getElementById("yourName2").value = Name;
+        name = get_name();
+        document.getElementById("yourName1").innerHTML = name;
+        document.getElementById("yourName2").value = name;
         $('.selectImages').slideDown(1000);
         $("#btnEnd").show();
     });
@@ -44,7 +50,6 @@ $(function() {
         $("#btnEnd").hide();
     });
 });
-var score = 0;
 
 function game(personAnswer) {
     while (-300 < score && score < 300) {
@@ -95,6 +100,38 @@ function game(personAnswer) {
         document.getElementById("End").innerHTML = "<p>Game End</p>";
     }
 }
+
+$("#send").on("click", function(){
+    var dataInsert = {
+        'janken_name': name,
+        'janken_score': score,
+        'janken_token': j_token_val
+    };
+    btnSend(dataInsert);
+});
+
+function btnSend(datas) {
+    $.ajax({
+        type:"POST",
+        url:"http://192.168.0.15/php/insert_jresult.php",
+        data:datas,
+        dataType: "json",
+        success: function(json_data) {
+            if (!json_data[0]) {
+                return;
+            }
+            // console.log(json_data);
+        },
+        error: function() {
+            // alert("Server Error. Pleasy try again later.");
+        },
+        complete: function() {
+            // alert("Complete!");
+        }
+    });
+}
+
+
 // view score
 $(function() {
     $("#load").on("click", function() {
