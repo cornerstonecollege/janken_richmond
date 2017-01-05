@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>ai Project</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/project.css">
+    <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/project_hannah.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Jyanken Game</h1>
+        <h3>Click Start buttom! Rock? Scissors? Pepar?</h3>
+        <button id="btnStart" class="btn btn-default">Start</button>
+        <button id="btnEnd" class="btn btn-default">End</button>
+        <a href="javascript:location.reload();"><button class="btn btn-default">Reload this page</button></a>
+        <div class="row">
+            <div class="col-md-12">
+                <img id="imgComputer" src="img\Rock.png" alt="Rock">
+                <span>VS</span>
+                <img id="imgPerson" src="img\Rock.png" alt="Rock">
+            </div>
+        </div>
+        <div class="row selectImages">
+            <span>You are,,,</span>
+            <span id="Result"></span>
+            <div class="col-md-12">
+                <img onclick="game('Rock')" src="img\Rock.png" alt="Rock">
+                <img onclick="game('Pepar')" src="img\Pepar.png" alt="Paper">
+                <img onclick="game('Scissors')" src="img\Scissors.png" alt="Scissors">
+            </div>
+        </div>
+        <div class="col-md-12">
+          <span>Name:</span>
+          <span id="yourName1" name="janken_name"></span>
+          <span>Score:</span>
+          <span id="Score1" name="janken_score"></span>
+        </div>
+        <!-- In order to send to the server -->
+        <form action="http://192.168.0.28/php/insertrsp.php" method="post">
+            <div class="form-group">
+                <input id="yourName2" type="hidden" name="janken_name" value="">
+                <input id="Score2" type="hidden" name="janken_score" value="">
+                <button id="send" class="btn btn-default">Send</button>
+            </div>
+        </form>
+        <br />
+        <div class="col-md-12">
+            <div id="End"></div>
+        </div>
+        <div class="col-md-12">
+            <button id="load" class="btn btn-default">Load Score</button>
+            <button id="btnMerge" class="btn btn-default">Merge Sort</button>
+            <button id="btnBucket" class="btn btn-default">Bucket Sort</button>
+            <table id="listbox" class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>NAME</th>
+                        <th>SCORE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

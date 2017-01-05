@@ -1,0 +1,10 @@
+body{
+  text-align: center;
+}
+.RockPaperScissors img{
+  margin: 30px;
+  width: 200px;
+}
+p{
+  font-size: 30px;
+}
