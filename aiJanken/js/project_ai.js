@@ -74,7 +74,7 @@ function game(personAnswer) {
 // view score
 $(function() {
     $("#load").on("click", function() {
-        $.getJSON("http://192.168.0.15/php/rsp.php", function(data) {
+        $.getJSON("http://192.168.0.15/php/ScoreTable.php", function(data) {
             for (var i in data) {
                 var tr = $("<tr>");
                 var td_data = $("<td>").text(data[i].id);
