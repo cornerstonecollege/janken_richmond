@@ -23,3 +23,4 @@ This game has three funtions.
 
 ### Due
 January 3rd
+- connect all function togheter
