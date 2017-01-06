@@ -4,7 +4,7 @@ var score = 0;
 
 function get_name() {
   if (typeof(Storage) !== "undefined") {
-    var existing_name = localStorage.getItem("lastgname")
+    var existing_name = localStorage.getItem("lastdnfame")
       if(existing_name){
         document.getElementById("Result").innerHTML = existing_name;
         return existing_name;
