@@ -5,12 +5,18 @@
     <title>ai Project</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no,shrink-to-fit=no">
+    <!-- <meta name="HandheldFriendly" content="true"> -->
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/project.css">
     <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/project_ai.js"></script>
+    <script type="text/javascript">
+        // document.addEventListener('gesturestart', function (e) {
+        //     e.preventDefault();
+        // });
+    </script>
 </head>
 
 <body>
@@ -19,20 +25,22 @@
         <h3>Click Start buttom! Rock? Scissors? Pepar?</h3>
         <button id="btnEnd" class="btn btn-default">End</button>
         <a href="javascript:location.reload();"><button class="btn btn-default">Reload this page</button></a>
-        <div class="row">
+        <div class="row images--show">
             <div class="col-md-12">
                 <img id="imgComputer" src="img\Rock.png" alt="Rock">
                 <span>VS</span>
                 <img id="imgPerson" src="img\Rock.png" alt="Rock">
             </div>
         </div>
-        <div class="row selectImages">
-            <span>You are,,,</span>
-            <span id="Result"></span>
+        <div class="row images">
+            <span>You are </span>
+            "<span id="Result"></span>"
             <div class="col-md-12">
-                <img onclick="game('Rock')" src="img\Rock.png" alt="Rock"  id="competitor1">
-                <img onclick="game('Pepar')" src="img\Pepar.png" alt="Paper" id="competitor2">
-                <img onclick="game('Scissors')" src="img\Scissors.png" alt="Scissors" id="competitor3">
+                <div class="row">
+                    <div class="col-xs-4"><img onclick="game('Rock')" src="img\Rock.png" alt="Rock"></div>
+                    <div class="col-xs-4"><img onclick="game('Pepar')" src="img\Pepar.png" alt="Paper"></div>
+                    <div class="col-xs-4"><img onclick="game('Scissors')" src="img\Scissors.png" alt="Scissors"></div>
+                </div>
             </div>
         </div>
         <div class="col-md-12">
