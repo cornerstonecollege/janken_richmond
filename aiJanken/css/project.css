@@ -5,11 +5,12 @@ body{
   text-align: left;
   font-size: 18px;
 }
+
 img{
   margin: 10px;
   width: 20%;
 }
-.selectImages img{
+.selectImages img {
   margin: 10px;
   width: 15%;
 }
@@ -17,8 +18,61 @@ p,span{
   font-size: 25px;
 }
 
+/* tablet (the medium)*/
+@media (max-width: 768px) {
+  h1{
+    color:orange;
+  }
+
+  #imgComputer {
+    height: 80%;
+    width: 80%;
+  }
+  #imgPerson {
+    height: 80%;
+    width: 80%;
+  }
+  #competitor1 {
+    height: 80%;
+    width: 80%;
+  }
+  #competitor2 {
+    height: 80%;
+    width: 80%;
+  }
+  #competitor3 {
+    height: 80%;
+    width: 80%;
+  }
+
+}
+
+/* mobile (the smallest)*/
 @media (max-width: 480px) {
-  p,span{
+  h1 {
+    color:red;
+  }
+  p,span {
     font-size: 12px;
+  }
+  #imgComputer {
+    height: 80%;
+    width: 80%;
+  }
+  #imgPerson {
+    height: 80%;
+    width: 80%;
+  }
+  #competitor1 {
+    height: 80%;
+    width: 80%;
+  }
+  #competitor2 {
+    height: 80%;
+    width: 80%;
+  }
+  #competitor3 {
+    height: 80%;
+    width: 80%;
   }
 }

@@ -1,24 +1,53 @@
-var yName = "";
+var name;
+var j_token_val;
+var score = 0;
 
 $(window).ready(function() {
     $("#btnEnd").hide();
-    $('.selectImages').hide();
+    // $('.selectImages').hide();
+    console.log("hi");
     document.getElementById("yourName1").innerHTML = "";
     document.getElementById("Result").innerHTML = "";
     document.getElementById("Score1").innerHTML = "";
     document.getElementById("End").innerHTML = "";
-    yName = prompt("Please enter your name", "ai");
-    document.getElementById("yourName1").innerHTML = yName;
+    name = get_name();
+    document.getElementById("yourName1").innerHTML = name;
     $('.selectImages').slideDown(1000);
     $("#btnEnd").show();
     $('#btnEnd').click(function() {
         document.getElementById("End").innerHTML = "<p>Game End</p>";
-        $('.selectImages').hide();
+        // $('.selectImages').hide();
         $("#btnEnd").hide();
     });
 });
 
-var score = 0;
+
+function get_name() {
+  if (typeof(Storage) !== "undefined") {
+    var existing_name = localStorage.getItem("lastname")
+      if(existing_name){
+        document.getElementById("Result").innerHTML = existing_name;
+        return existing_name;
+      }else{
+        var new_name = prompt("Please enter your name");
+        j_token_val = token();
+         localStorage.setItem("j_token", j_token_val);
+         localStorage.setItem("lastname", new_name);
+         document.getElementById("Result").innerHTML = new_name;
+         return new_name;
+      }
+  } else {
+      document.getElementById("Result").innerHTML = "Sorry, your browser does not support Web Storage...";
+  }
+}
+
+// make token
+var rand = function() {
+    return Math.random().toString(36).substr(2);
+};
+var token = function() {
+    return rand() + rand();
+};
 
 function game(personAnswer) {
     var result = "";
@@ -72,11 +101,12 @@ function post() {
     $(function() {
         var request;
         request = $.ajax({
-            url: 'http://192.168.0.15/php/insertrsp.php',
+            url: 'http://192.168.0.15/php/insert_jresult.php',
             method: 'post',
             data: {
-                'janken_name': yName,
-                'janken_score': score
+                'janken_name': name,
+                'janken_score': score,
+                'janken_token': j_token_val
             },
             success: function(result) {
                 $("#result")
