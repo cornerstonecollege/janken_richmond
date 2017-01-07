@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/project.css">
     <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/project_ai.js"></script>
+    <script type="text/javascript" src="js/script_janken.js"></script>
     <script type="text/javascript">
         // document.addEventListener('gesturestart', function (e) {
         //     e.preventDefault();
@@ -22,9 +22,6 @@
 <body>
     <div class="container">
         <h1>Jyanken Game</h1>
-        <h3>Click Start buttom! Rock? Scissors? Pepar?</h3>
-        <button id="btnEnd" class="btn btn-default">End</button>
-        <a href="javascript:location.reload();"><button class="btn btn-default">Reload this page</button></a>
         <div class="row images--show">
             <div class="col-md-12">
                 <img id="imgComputer" src="img\Rock.png" alt="Rock">
@@ -55,9 +52,6 @@
             <div id="End"></div>
         </div>
         <div class="col-md-12">
-            <button id="load" class="btn btn-default">Load Score</button>
-            <button id="btnMerge" class="btn btn-default">Merge Sort</button>
-            <button id="btnBucket" class="btn btn-default">Bucket Sort</button>
             <table id="listbox" class="table">
                 <thead>
                     <tr>
