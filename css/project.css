@@ -9,9 +9,6 @@
 		width: 480px;
 	}
 }
-
-
-
 body{
   text-align: center;
 }
@@ -20,68 +17,26 @@ body{
   font-size: 18px;
 }
 .images--show img{
-	width: 300px;
+	width: 20%;
 	height: auto;
-}
-@media only screen and (max-width: 768px) {
-	.images--show img{
-		width: 130px;
-		height: auto;
-	}
 }
 .images img{
-	width: 200px;
+	width: 80%;
 	height: auto;
 }
-@media only screen and (max-width: 768px) {
-	.images img{
-		width: 100px;
-		height: auto;
-	}
-
 img{
   margin: 10px;
   width: 20%;
 }
-.selectImages img {
-  margin: 10px;
-  width: 15%;
-}
 p,span{
   font-size: 25px;
 }
-
 /* tablet (the medium)*/
 @media (max-width: 768px) {
   h1{
     color:orange;
   }
-
-  #imgComputer {
-    height: 80%;
-    width: 80%;
-  }
-  #imgPerson {
-    height: 80%;
-    width: 80%;
-  }
-  #competitor1 {
-    height: 80%;
-    width: 80%;
-  }
-  #competitor2 {
-    height: 80%;
-    width: 80%;
-  }
-  #competitor3 {
-    height: 80%;
-    width: 80%;
-  }
-
-=======
->>>>>>> 158b16e128e68a791a89981001808e3a669cd6b0
 }
-
 /* mobile (the smallest)*/
 @media (max-width: 480px) {
   h1 {
@@ -89,25 +44,5 @@ p,span{
   }
   p,span {
     font-size: 12px;
-  }
-  #imgComputer {
-    height: 80%;
-    width: 80%;
-  }
-  #imgPerson {
-    height: 80%;
-    width: 80%;
-  }
-  #competitor1 {
-    height: 80%;
-    width: 80%;
-  }
-  #competitor2 {
-    height: 80%;
-    width: 80%;
-  }
-  #competitor3 {
-    height: 80%;
-    width: 80%;
   }
 }
