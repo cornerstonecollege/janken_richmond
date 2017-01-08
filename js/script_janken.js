@@ -112,26 +112,24 @@ function post() {
                 $("#result")
                     .html("Data has sent!!!")
                     .addClass("bg-success");
+                getScore();
             }
         });
     });
 }
 
-// view score
-$(function() {
-    $("#load").on("click", function() {
-        $.getJSON("http://192.168.0.15/php/ScoreTable.php", function(data) {
-            for (var i in data) {
-                var tr = $("<tr>");
-                var td_data = $("<td>").text(data[i].id);
-                tr.append(td_data);
-                var td_name = $("<td>").text(data[i].name);
-                tr.append(td_name);
-                var td_score = $("<td>").text(data[i].score);
-                tr.append(td_score);
-                $("tbody").append(tr);
-                $("#load").hide();
-            }
-        });
+function getScore(){
+    $.getJSON("http://192.168.0.15/php/ScoreTable.php", function(data) {
+        for (var i in data) {
+            var tr = $("<tr>");
+            var td_data = $("<td>").text(data[i].id);
+            tr.append(td_data);
+            var td_name = $("<td>").text(data[i].name);
+            tr.append(td_name);
+            var td_score = $("<td>").text(data[i].score);
+            tr.append(td_score);
+            $("tbody").append(tr);
+            $("#load").hide();
+        }
     });
-});
+}
