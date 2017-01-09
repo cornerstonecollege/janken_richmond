@@ -12,6 +12,7 @@ $(window).ready(function() {
     document.getElementById("End").innerHTML = "";
     name = get_name();
     document.getElementById("yourName1").innerHTML = name;
+    getScore();
     $('.selectImages').slideDown(1000);
     $("#btnEnd").show();
     $('#btnEnd').click(function() {
@@ -26,15 +27,27 @@ function get_name() {
   if (typeof(Storage) !== "undefined") {
     var existing_name = localStorage.getItem("lastname")
       if(existing_name){
+        j_token_val = localStorage.getItem("j_token")
         document.getElementById("Result").innerHTML = existing_name;
         return existing_name;
       }else{
-        var new_name = prompt("Please enter your name");
+        var new_name_boo = true;
+        do {
+            var new_name = prompt("Please enter your name");
+            if (new_name === "") {
+                // user pressed OK, but the input field was empty
+            } else if (new_name) {
+                // user typed something and hit OK
+                new_name_boo = false;
+            } else {
+                // user hit cancel
+            }
+        } while (new_name_boo);
         j_token_val = token();
-         localStorage.setItem("j_token", j_token_val);
-         localStorage.setItem("lastname", new_name);
-         document.getElementById("Result").innerHTML = new_name;
-         return new_name;
+        localStorage.setItem("j_token", j_token_val);
+        localStorage.setItem("lastname", new_name);
+        document.getElementById("Result").innerHTML = new_name;
+        return new_name;
       }
   } else {
       document.getElementById("Result").innerHTML = "Sorry, your browser does not support Web Storage...";
@@ -112,26 +125,24 @@ function post() {
                 $("#result")
                     .html("Data has sent!!!")
                     .addClass("bg-success");
+                getScore();
             }
         });
     });
 }
 
-// view score
-$(function() {
-    $("#load").on("click", function() {
-        $.getJSON("http://192.168.0.15/php/ScoreTable.php", function(data) {
-            for (var i in data) {
-                var tr = $("<tr>");
-                var td_data = $("<td>").text(data[i].id);
-                tr.append(td_data);
-                var td_name = $("<td>").text(data[i].name);
-                tr.append(td_name);
-                var td_score = $("<td>").text(data[i].score);
-                tr.append(td_score);
-                $("tbody").append(tr);
-                $("#load").hide();
-            }
-        });
+function getScore(){
+    $.getJSON("http://192.168.0.15/php/ScoreTable.php", function(data) {
+        $('tr.add').remove();
+        for (var i in data) {
+            var tr = $("<tr class='add'>");
+            var td_data = $("<td>").text(data[i].rank);
+            tr.append(td_data);
+            var td_name = $("<td>").text(data[i].name);
+            tr.append(td_name);
+            var td_score = $("<td>").text(data[i].score);
+            tr.append(td_score);
+            $("tbody").append(tr);
+        }
     });
-});
+}
