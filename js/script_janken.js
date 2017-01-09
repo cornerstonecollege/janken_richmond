@@ -1,12 +1,12 @@
 //animation for computer image
-var images = ["img/Rock.png", "img/Scissors.png", "img/Pepar.png"];
+var images = ["rock", "scissors", "paper"];
 var index = 0;
 var clickAnswer = "false";
 setInterval(changeImage, 100);
 
 function changeImage() {
     if (clickAnswer == "false") {
-        document.getElementById("imgComputer").setAttribute("src", images[index]);
+        document.getElementById("imgComputer").src = "img/" + images[index] + ".png";
         index++;
         if (index >= images.length) {
             index = 0;
