@@ -5,9 +5,7 @@ var score = 0;
 $(window).ready(function() {
     $("#btnEnd").hide();
     // $('.selectImages').hide();
-    console.log("hi");
     document.getElementById("yourName1").innerHTML = "";
-    document.getElementById("Result").innerHTML = "";
     document.getElementById("Score1").innerHTML = "";
     document.getElementById("End").innerHTML = "";
     name = get_name();
@@ -28,7 +26,7 @@ function get_name() {
     var existing_name = localStorage.getItem("lastname")
       if(existing_name){
         j_token_val = localStorage.getItem("j_token")
-        document.getElementById("Result").innerHTML = existing_name;
+        document.getElementById("yourName1").innerHTML = existing_name;
         return existing_name;
       }else{
         var new_name_boo = true;
@@ -46,11 +44,11 @@ function get_name() {
         j_token_val = token();
         localStorage.setItem("j_token", j_token_val);
         localStorage.setItem("lastname", new_name);
-        document.getElementById("Result").innerHTML = new_name;
+        document.getElementById("yourName1").innerHTML = new_name;
         return new_name;
       }
   } else {
-      document.getElementById("Result").innerHTML = "Sorry, your browser does not support Web Storage...";
+      // document.getElementById("Result").innerHTML = "Sorry, your browser does not support Web Storage...";
   }
 }
 
@@ -63,45 +61,48 @@ var token = function() {
 };
 
 function game(personAnswer) {
-    var result = "";
-    var janken = ["Rock", "Scissors", "Pepar"];
+    var janken = ["rock", "scissors", "paper"];
     var computerAnswer = janken[Math.floor(Math.random() * janken.length)]; //Computer pic one of those from array
+    var x = document.getElementsByClassName("pChoice");
+    var i;
+    for (i = 0; i < x.length; i++) {
+      x[i].style.width = "80%";
+    }
     document.getElementById("imgComputer").src = "img/" + computerAnswer + ".png"; //Show image of computer's answer
-    document.getElementById("imgPerson").src = "img/" + personAnswer + ".png"; //Show image of your answer
-    result = judge(personAnswer, computerAnswer);
-    console.log("result = " + result);
+    document.getElementById("imgComputer").style.width = "30%";
+    var element = document.getElementById('' + personAnswer).style.width = "100%";
+    var result = judge(personAnswer, computerAnswer);
     if (result == "Win") {
         score = score + 100;
     }
     if (result == "Lose") {
         score = score - 100;
     }
-    document.getElementById("Result").innerHTML = personAnswer + "!! " + result;
     document.getElementById("Score1").innerHTML = score;
-    // document.getElementById("Score2").value = score;
     post();
 }
 //Compare personAnswer and computerAnswer
 function judge(personAnswer, computerAnswer) {
+    var result = "";
     if (personAnswer == computerAnswer) {
-        result = "Tie";
+        return result = "Tie";
     }
-    if (personAnswer == "Rock") {
-        if (computerAnswer == "Scissors") {
+    if (personAnswer == "rock") {
+        if (computerAnswer == "scissors") {
             result = "Win";
         } else {
             result = "Lose";
         }
     }
-    if (personAnswer == "Scissors") {
-        if (computerAnswer == "Rock") {
+    if (personAnswer == "scissors") {
+        if (computerAnswer == "rock") {
             result = "Lose";
         } else {
             result = "Win";
         }
     }
-    if (personAnswer == "Pepar") {
-        if (computerAnswer == "Rock") {
+    if (personAnswer == "paper") {
+        if (computerAnswer == "rock") {
             result = "Win";
         } else {
             result = "Lose";
