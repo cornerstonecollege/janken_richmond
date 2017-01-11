@@ -6,30 +6,35 @@
 		position: absolute;
 		right: 0;
 		top: 0;
+		padding-top: 40px;
 		width: 480px;
 	}
 }
-body{
+body {
   text-align: center;
+	padding-top: 40px;
 }
 .table{
   text-align: left;
   font-size: 18px;
 }
-.images--show img{
+.images--show img {
 	width: 20%;
 	height: auto;
 }
-.images img{
+.images img {
 	width: 80%;
 	height: auto;
 }
-img{
+img {
   margin: 10px;
   width: 20%;
 }
-p,span{
+p,span {
   font-size: 25px;
+}
+.navHeader {
+	color: #ddd;
 }
 /* tablet (the medium)*/
 @media (max-width: 768px) {
@@ -43,6 +48,6 @@ p,span{
     color:red;
   }
   p,span {
-    font-size: 12px;
+    font-size: 24px;
   }
 }
