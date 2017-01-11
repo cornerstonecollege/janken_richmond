@@ -1,59 +1,65 @@
-body{
+body {
   text-align: center;
 }
 .RockPaperScissors img{
   margin: 30px;
-  width: 200px;
+  height: 80%;
+  width: 80%;
 }
-p{
+#imgComputer {
+  height: 30%;
+  width: 30%;
+}
+#imgPerson {
+  height: 30%;
+  width: 30%;
+}
+
+p {
   font-size: 30px;
 }
+
 @media (max-width: 768px) {
-  h1{
-    color:orange;
   }
   #imgComputer {
-    height: 80%;
-    width: 80%;
+    height: 30%;
+    width: 30%;
   }
   #imgPerson {
-    height: 80%;
-    width: 80%;
+    height: 30%;
+    width: 30%;
   }
   #rockimg {
-    height: 80%;
-    width: 80%;
+    height: 30%;
+    width: 30%;
   }
   #paperimg {
-    height: 80%;
-    width: 80%;
+    height: 30%;
+    width: 30%;
   }
   #scissorsimg {
-    height: 80%;
-    width: 80%;
+    height: 30%;
+    width: 30%;
   }
 
   @media (max-width: 480px) {
-    h1{
-      color:green;
-    }
-    #imgComputer {
-      height: 80%;
-      width: 80%;
-    }
-    #imgPerson {
-      height: 80%;
-      width: 80%;
-    }
-    #rockimg {
-      height: 80%;
-      width: 80%;
-    }
-    #paperimg {
-      height: 80%;
-      width: 80%;
-    }
-    #scissorsimg {
-      height: 80%;
-      width: 80%;
-    }
+      #imgComputer {
+        height: 30%;
+        width: 30%;
+      }
+      #imgPerson {
+        height: 30%;
+        width: 30%;
+      }
+      #rockimg {
+        height: 30%;
+        width: 30%;
+      }
+      #paperimg {
+        height: 30%;
+        width: 30%;
+      }
+      #scissorsimg {
+        height: 30%;
+        width: 30%;
+      }
