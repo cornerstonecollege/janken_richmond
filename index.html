@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Janken Project</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no,shrink-to-fit=no">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/project.css">
+    <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/script_janken.js"></script>
+</head>
+
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container navHeader">
+      <span>Name:</span><span id="yourName1" name="janken_name"></span>
+      <span>Score:</span><span id="Score1" name="janken_score"></span>
+    </div>
+  </nav>
+    <div class="container">
+     <div class="logo">
+       <img src="img\janken_logo.jpg">
+     </div>
+        <div class="row images--show">
+            <div class="col-md-12">
+                <img id="imgComputer" src="img\rock.png" alt="Rock">
+            </div>
+        </div>
+        <div class="row images">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-xs-4"><img id="rock" class="pChoice" onclick="game('rock')" src="img\rock.png" alt="rock"></div>
+                    <div class="col-xs-4"><img id="paper" class="pChoice" onclick="game('paper')" src="img\paper.png" alt="paper"></div>
+                    <div class="col-xs-4"><img id="scissors" class="pChoice" onclick="game('scissors')" src="img\scissors.png" alt="scissors"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+        <span id="result"></span>
+        </div>
+        <br />
+        <div class="col-md-12">
+            <div id="End"></div>
+        </div>
+        <div class="col-md-12">
+            <table id="listbox" class="table">
+                <thead>
+                    <tr>
+                        <th>RANK</th>
+                        <th>NAME</th>
+                        <th>SCORE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

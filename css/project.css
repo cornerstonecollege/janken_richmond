@@ -1,0 +1,53 @@
+/* iPhone */
+@media only screen and (width:320px) and (device-width:320px) and (device-height:480px) and (orientation: landscape) {
+	body {
+		-webkit-transform: scale(0.667);
+		-webkit-transform-origin: top right;
+		position: absolute;
+		right: 0;
+		top: 0;
+		padding-top: 40px;
+		width: 480px;
+	}
+}
+body {
+  text-align: center;
+	padding-top: 40px;
+}
+.table{
+  text-align: left;
+  font-size: 18px;
+}
+.images--show img {
+	width: 20%;
+	height: auto;
+}
+.images img {
+	width: 80%;
+	height: auto;
+}
+img {
+  margin: 10px;
+  width: 20%;
+}
+p,span {
+  font-size: 25px;
+}
+.navHeader {
+	color: #ddd;
+}
+/* tablet (the medium)*/
+@media (max-width: 768px) {
+  h1{
+    color:orange;
+  }
+}
+/* mobile (the smallest)*/
+@media (max-width: 480px) {
+  h1 {
+    color:red;
+  }
+  p,span {
+    font-size: 24px;
+  }
+}
