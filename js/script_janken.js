@@ -1,3 +1,25 @@
+//animation for computer image
+var images = ["rock", "scissors", "paper"];
+var index = 0;
+var clickAnswer = "false";
+setInterval(changeImage, 100);
+
+function changeImage() {
+    if (clickAnswer == "false") {
+        document.getElementById("imgComputer").src = "img/" + images[index] + ".png";
+        index++;
+        if (index >= images.length) {
+            index = 0;
+        }
+    }
+}
+//clickAnswer = "true" --> "false" after 7 seconds and animation will start
+function startchangeImage() {
+    setInterval(function() {
+        clickAnswer = "false";
+    }, 7000);
+}
+
 var name;
 var j_token_val;
 var score = 0;
@@ -61,6 +83,8 @@ var token = function() {
 };
 
 function game(personAnswer) {
+    clickAnswer = "true";//stop animation for computer image
+    startchangeImage();
     var janken = ["rock", "scissors", "paper"];
     var computerAnswer = janken[Math.floor(Math.random() * janken.length)]; //Computer pic one of those from array
     var x = document.getElementsByClassName("pChoice");
