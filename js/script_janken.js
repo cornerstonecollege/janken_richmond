@@ -84,7 +84,7 @@ var token = function() {
 
 function game(personAnswer) {
     clickAnswer = "true";//stop animation for computer image
-    startchangeImage()
+    startchangeImage();
     var janken = ["rock", "scissors", "paper"];
     var computerAnswer = janken[Math.floor(Math.random() * janken.length)]; //Computer pic one of those from array
     var x = document.getElementsByClassName("pChoice");
