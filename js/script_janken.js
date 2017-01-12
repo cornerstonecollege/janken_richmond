@@ -44,6 +44,15 @@ $(window).ready(function() {
     });
 });
 
+$(window).ready(function() {
+    $('.btn-logout').click(function() {
+        localStorage.removeItem("lastname");
+        localStorage.removeItem("j_token");
+        name = get_name();
+        score = 0;
+        document.getElementById("Score1").innerHTML = 0;
+    });
+});
 
 function get_name() {
   if (typeof(Storage) !== "undefined") {
