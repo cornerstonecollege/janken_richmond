@@ -32,7 +32,7 @@ $(window).ready(function() {
     document.getElementById("End").innerHTML = "";
     name = get_name();
     document.getElementById("yourName1").innerHTML = name;
-    score = get_score();
+    get_score();
     document.getElementById("Score1").innerHTML = score;
     get_all_score();
     $('.selectImages').slideDown(1000);
@@ -141,7 +141,7 @@ function post() {
     $(function() {
         var request;
         request = $.ajax({
-            url: 'http://192.168.0.15/php/insert_jresult.php',
+            url: 'php/insert_jresult.php',
             method: 'post',
             data: {
                 'janken_name': name,
@@ -159,34 +159,25 @@ function post() {
 }
 
 function get_score(){
-    var request = $.ajax({
-        url: 'http://192.168.0.15/php/ScoreTable.php',
+    $.ajax({
+        url: 'php/ScoreTable.php',
         method: 'post',
+        dataType: 'json',
         data: {
             'janken_name': name,
             'janken_token': j_token_val
         },
-        success: function(result) {
-            return result[0].score;
+        success: function(data) {
+            if(data[0].score !== undefined){
+                document.getElementById("Score1").innerHTML = data[0].score;
+            }else{
+                document.getElementById("Score1").innerHTML = 0;
+            }
         }
     });
-
-    // $.getJSON("http://192.168.0.15/php/ScoreTable.php", function(data) {
-    //     $('tr.add').remove();
-    //     for (var i in data) {
-    //         var tr = $("<tr class='add'>");
-    //         var td_data = $("<td>").text(data[i].rank);
-    //         tr.append(td_data);
-    //         var td_name = $("<td>").text(data[i].name);
-    //         tr.append(td_name);
-    //         var td_score = $("<td>").text(data[i].score);
-    //         tr.append(td_score);
-    //         $("tbody").append(tr);
-    //     }
-    // });
 }
 function get_all_score(){
-    $.getJSON("http://192.168.0.15/php/ScoreTable.php", function(data) {
+    $.getJSON("php/ScoreTable.php", function(data) {
         $('tr.add').remove();
         for (var i in data) {
             var tr = $("<tr class='add'>");
