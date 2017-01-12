@@ -16,18 +16,18 @@ function changeImage() {
 }
 //clickAnswer = "true" --> "false" after 7 seconds and animation will start
 function startchangeImage() {
-    setInterval(function() {
+    global_timeout = setTimeout(function() {
         clickAnswer = "false";
     }, 7000);
 }
 
+var global_timeout;
 var name;
 var j_token_val;
 var score = 0;
 
 $(window).ready(function() {
     $("#btnEnd").hide();
-    // $('.selectImages').hide();
     document.getElementById("yourName1").innerHTML = "";
     document.getElementById("Score1").innerHTML = "";
     document.getElementById("End").innerHTML = "";
@@ -40,7 +40,6 @@ $(window).ready(function() {
     $("#btnEnd").show();
     $('#btnEnd').click(function() {
         document.getElementById("End").innerHTML = "<p>Game End</p>";
-        // $('.selectImages').hide();
         $("#btnEnd").hide();
     });
 });
@@ -87,6 +86,7 @@ var token = function() {
 
 function game(personAnswer) {
     clickAnswer = "true";//stop animation for computer image
+    clearTimeout(global_timeout);
     startchangeImage();
     var janken = ["rock", "scissors", "paper"];
     var computerAnswer = janken[Math.floor(Math.random() * janken.length)]; //Computer pic one of those from array
