@@ -2,6 +2,7 @@
 var images = ["rock", "scissors", "paper"];
 var index = 0;
 var clickAnswer = "false";
+var serverUrl = "http://192.168.0.15/";
 setInterval(changeImage, 100);
 
 function changeImage() {
@@ -141,7 +142,7 @@ function post() {
     $(function() {
         var request;
         request = $.ajax({
-            url: 'php/insert_jresult.php',
+            url: serverUrl + 'php/insert_jresult.php',
             method: 'post',
             data: {
                 'janken_name': name,
@@ -160,7 +161,7 @@ function post() {
 
 function get_score(){
     $.ajax({
-        url: 'php/ScoreTable.php',
+        url: serverUrl+'php/ScoreTable.php',
         method: 'post',
         dataType: 'json',
         data: {
@@ -177,7 +178,7 @@ function get_score(){
     });
 }
 function get_all_score(){
-    $.getJSON("php/ScoreTable.php", function(data) {
+    $.getJSON(serverUrl+"php/ScoreTable.php", function(data) {
         $('tr.add').remove();
         for (var i in data) {
             var tr = $("<tr class='add'>");
