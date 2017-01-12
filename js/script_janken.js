@@ -190,7 +190,11 @@ function get_all_score(){
     $.getJSON(serverUrl+"php/ScoreTable.php", function(data) {
         $('tr.add').remove();
         for (var i in data) {
-            var tr = $("<tr class='add'>");
+            if(data[i].name == name){
+                var tr = $("<tr class='add current'>");
+            }else{
+                var tr = $("<tr class='add'>");
+            }
             var td_data = $("<td>").text(data[i].rank);
             tr.append(td_data);
             var td_name = $("<td>").text(data[i].name);
