@@ -36,6 +36,9 @@ p,span {
 .navHeader {
 	color: #ddd;
 }
+table .current{
+	background: #eee;
+}
 /* tablet (the medium)*/
 @media (max-width: 768px) {
   h1{
