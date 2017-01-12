@@ -2,6 +2,7 @@
 var images = ["rock", "scissors", "paper"];
 var index = 0;
 var clickAnswer = "false";
+var serverUrl = "http://192.168.0.15/";
 setInterval(changeImage, 100);
 
 function changeImage() {
@@ -32,7 +33,9 @@ $(window).ready(function() {
     document.getElementById("End").innerHTML = "";
     name = get_name();
     document.getElementById("yourName1").innerHTML = name;
-    getScore();
+    get_score();
+    document.getElementById("Score1").innerHTML = score;
+    get_all_score();
     $('.selectImages').slideDown(1000);
     $("#btnEnd").show();
     $('#btnEnd').click(function() {
@@ -139,7 +142,7 @@ function post() {
     $(function() {
         var request;
         request = $.ajax({
-            url: 'http://192.168.0.15/php/insert_jresult.php',
+            url: serverUrl + 'php/insert_jresult.php',
             method: 'post',
             data: {
                 'janken_name': name,
@@ -150,14 +153,32 @@ function post() {
                 $("#result")
                     .html("Data has sent!!!")
                     .addClass("bg-success");
-                getScore();
+                get_all_score();
             }
         });
     });
 }
 
-function getScore(){
-    $.getJSON("http://192.168.0.15/php/ScoreTable.php", function(data) {
+function get_score(){
+    $.ajax({
+        url: serverUrl+'php/ScoreTable.php',
+        method: 'post',
+        dataType: 'json',
+        data: {
+            'janken_name': name,
+            'janken_token': j_token_val
+        },
+        success: function(data) {
+            if(data[0].score !== undefined){
+                document.getElementById("Score1").innerHTML = data[0].score;
+            }else{
+                document.getElementById("Score1").innerHTML = 0;
+            }
+        }
+    });
+}
+function get_all_score(){
+    $.getJSON(serverUrl+"php/ScoreTable.php", function(data) {
         $('tr.add').remove();
         for (var i in data) {
             var tr = $("<tr class='add'>");
