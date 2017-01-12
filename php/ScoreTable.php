@@ -1,7 +1,7 @@
 <?php
 $connection = mysqli_connect('127.0.0.1','root','admin',"janken") or die("Error " . mysqli_error($connection));
 
-if($_POST['janken_name'] && $_POST['janken_token']){
+if(isset($_POST['janken_name']) && isset($_POST['janken_token'])){
 	$sql = "SELECT name, score FROM new_score where (name = ".$_POST['janken_name']." and token = ". $_POST['janken_token'] ." )";
 }else{
 	$sql = "SELECT name, score, (select count(DISTINCT score) 
