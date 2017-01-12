@@ -32,7 +32,9 @@ $(window).ready(function() {
     document.getElementById("End").innerHTML = "";
     name = get_name();
     document.getElementById("yourName1").innerHTML = name;
-    getScore();
+    score = get_score();
+    document.getElementById("Score1").innerHTML = score;
+    get_all_score();
     $('.selectImages').slideDown(1000);
     $("#btnEnd").show();
     $('#btnEnd').click(function() {
@@ -150,13 +152,40 @@ function post() {
                 $("#result")
                     .html("Data has sent!!!")
                     .addClass("bg-success");
-                getScore();
+                get_all_score();
             }
         });
     });
 }
 
-function getScore(){
+function get_score(){
+    var request = $.ajax({
+        url: 'http://192.168.0.15/php/ScoreTable.php',
+        method: 'post',
+        data: {
+            'janken_name': name,
+            'janken_token': j_token_val
+        },
+        success: function(result) {
+            return result[0].score;
+        }
+    });
+
+    // $.getJSON("http://192.168.0.15/php/ScoreTable.php", function(data) {
+    //     $('tr.add').remove();
+    //     for (var i in data) {
+    //         var tr = $("<tr class='add'>");
+    //         var td_data = $("<td>").text(data[i].rank);
+    //         tr.append(td_data);
+    //         var td_name = $("<td>").text(data[i].name);
+    //         tr.append(td_name);
+    //         var td_score = $("<td>").text(data[i].score);
+    //         tr.append(td_score);
+    //         $("tbody").append(tr);
+    //     }
+    // });
+}
+function get_all_score(){
     $.getJSON("http://192.168.0.15/php/ScoreTable.php", function(data) {
         $('tr.add').remove();
         for (var i in data) {
