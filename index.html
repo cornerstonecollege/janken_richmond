@@ -6,6 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no,shrink-to-fit=no">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon.ico">
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/project.css">
     <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
@@ -15,20 +16,20 @@
 
 <body>
   <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container navHeader">
+    <div class="container navHeader" id="navHeader">
+      <div class="navbar-brand" id="navBrand" href="img/janken_logo_.png">
       <span>Name:</span><span id="yourName1" name="janken_name"></span>
       <span>Score:</span><span id="Score1" name="janken_score"></span>
     </div>
+   </div>
   </nav>
     <div class="container">
-     <div class="logo">
-       <img src="img\janken_logo.jpg">
-     </div>
         <div class="row images--show">
             <div class="col-md-12">
                 <img id="imgComputer" src="img\rock.png" alt="Rock">
             </div>
         </div>
+        <button class="btn-logout">LOGOUT</button>
         <div class="row images">
             <div class="col-md-12">
                 <div class="row">

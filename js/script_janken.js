@@ -2,6 +2,7 @@
 var images = ["rock", "scissors", "paper"];
 var index = 0;
 var clickAnswer = "false";
+var serverUrl = "http://192.168.0.15/";
 setInterval(changeImage, 100);
 
 function changeImage() {
@@ -15,33 +16,43 @@ function changeImage() {
 }
 //clickAnswer = "true" --> "false" after 7 seconds and animation will start
 function startchangeImage() {
-    setInterval(function() {
+    global_timeout = setTimeout(function() {
         clickAnswer = "false";
     }, 7000);
 }
 
+var global_timeout;
 var name;
 var j_token_val;
 var score = 0;
 
 $(window).ready(function() {
     $("#btnEnd").hide();
-    // $('.selectImages').hide();
     document.getElementById("yourName1").innerHTML = "";
     document.getElementById("Score1").innerHTML = "";
     document.getElementById("End").innerHTML = "";
     name = get_name();
     document.getElementById("yourName1").innerHTML = name;
-    getScore();
+    get_score();
+    document.getElementById("Score1").innerHTML = score;
+    get_all_score();
     $('.selectImages').slideDown(1000);
     $("#btnEnd").show();
     $('#btnEnd').click(function() {
         document.getElementById("End").innerHTML = "<p>Game End</p>";
-        // $('.selectImages').hide();
         $("#btnEnd").hide();
     });
 });
 
+$(window).ready(function() {
+    $('.btn-logout').click(function() {
+        localStorage.removeItem("lastname");
+        localStorage.removeItem("j_token");
+        name = get_name();
+        score = 0;
+        document.getElementById("Score1").innerHTML = 0;
+    });
+});
 
 function get_name() {
   if (typeof(Storage) !== "undefined") {
@@ -84,6 +95,7 @@ var token = function() {
 
 function game(personAnswer) {
     clickAnswer = "true";//stop animation for computer image
+    clearTimeout(global_timeout);
     startchangeImage();
     var janken = ["rock", "scissors", "paper"];
     var computerAnswer = janken[Math.floor(Math.random() * janken.length)]; //Computer pic one of those from array
@@ -139,7 +151,7 @@ function post() {
     $(function() {
         var request;
         request = $.ajax({
-            url: 'http://192.168.0.15/php/insert_jresult.php',
+            url: serverUrl + 'php/insert_jresult.php',
             method: 'post',
             data: {
                 'janken_name': name,
@@ -150,17 +162,39 @@ function post() {
                 $("#result")
                     .html("Data has sent!!!")
                     .addClass("bg-success");
-                getScore();
+                get_all_score();
             }
         });
     });
 }
 
-function getScore(){
-    $.getJSON("http://192.168.0.15/php/ScoreTable.php", function(data) {
+function get_score(){
+    $.ajax({
+        url: serverUrl+'php/ScoreTable.php',
+        method: 'post',
+        dataType: 'json',
+        data: {
+            'janken_name': name,
+            'janken_token': j_token_val
+        },
+        success: function(data) {
+            if(data[0].score !== undefined){
+                document.getElementById("Score1").innerHTML = data[0].score;
+            }else{
+                document.getElementById("Score1").innerHTML = 0;
+            }
+        }
+    });
+}
+function get_all_score(){
+    $.getJSON(serverUrl+"php/ScoreTable.php", function(data) {
         $('tr.add').remove();
         for (var i in data) {
-            var tr = $("<tr class='add'>");
+            if(data[i].name == name){
+                var tr = $("<tr class='add current'>");
+            }else{
+                var tr = $("<tr class='add'>");
+            }
             var td_data = $("<td>").text(data[i].rank);
             tr.append(td_data);
             var td_name = $("<td>").text(data[i].name);
