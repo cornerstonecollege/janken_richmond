@@ -12,19 +12,19 @@
 }
 body {
   text-align: center;
-	padding-top: 40px;
+  padding-top: 40px;
 }
 .table{
   text-align: left;
   font-size: 18px;
 }
 .images--show img {
-	width: 20%;
-	height: auto;
+  width: 20%;
+  height: auto;
 }
 .images img {
-	width: 80%;
-	height: auto;
+  width: 80%;
+  height: auto;
 }
 img {
   margin: 10px;
@@ -34,21 +34,21 @@ p,span {
   font-size: 25px;
 }
 .navHeader {
-	color: #ddd;
+  color: #ddd;
 }
 table .current{
-	background: #eee;
+  background: #eee;
 }
 /* tablet (the medium)*/
 @media (max-width: 768px) {
   h1{
-    color:orange;
+    color: orange;
   }
 }
 /* mobile (the smallest)*/
 @media (max-width: 480px) {
   h1 {
-    color:red;
+    color: red;
   }
   p,span {
     font-size: 24px;
