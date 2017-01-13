@@ -1,12 +1,13 @@
 #navBrand {
-		 max-height: 15%;
-		 height: 15%;
+		 max-height: 30%;
+		 height: 30%;
 		 -o-object-fit: contain;
 		 object-fit: contain;
 	 }
 
 .navHeader {
 	 	color: #ddd;
+		float: right;
 	 }
 
 
