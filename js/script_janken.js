@@ -2,6 +2,7 @@
 var images = ["rock", "scissors", "paper"];
 var index = 0;
 var clickAnswer = "false";
+var serverUrl = "http://192.168.0.15/";
 setInterval(changeImage, 100);
 
 function changeImage() {
@@ -32,7 +33,9 @@ $(window).ready(function() {
     document.getElementById("End").innerHTML = "";
     name = get_name();
     document.getElementById("yourName1").innerHTML = name;
-    getScore();
+    get_score();
+    document.getElementById("Score1").innerHTML = score;
+    get_all_score();
     $('.selectImages').slideDown(1000);
     $("#btnEnd").show();
     $('#btnEnd').click(function() {
@@ -41,6 +44,15 @@ $(window).ready(function() {
     });
 });
 
+$(window).ready(function() {
+    $('.btn-logout').click(function() {
+        localStorage.removeItem("lastname");
+        localStorage.removeItem("j_token");
+        name = get_name();
+        score = 0;
+        document.getElementById("Score1").innerHTML = 0;
+    });
+});
 
 function get_name() {
   if (typeof(Storage) !== "undefined") {
@@ -96,10 +108,11 @@ function game(personAnswer) {
     document.getElementById("imgComputer").style.width = "30%";
     var element = document.getElementById('' + personAnswer).style.width = "100%";
     var result = judge(personAnswer, computerAnswer);
-    if (result == "Win") {
+    document.getElementById("imgResult").src = "img/" + result + ".png";
+    if (result == "win") {
         score = score + 100;
     }
-    if (result == "Lose") {
+    if (result == "lose") {
         score = score - 100;
     }
     document.getElementById("Score1").innerHTML = score;
@@ -109,27 +122,27 @@ function game(personAnswer) {
 function judge(personAnswer, computerAnswer) {
     var result = "";
     if (personAnswer == computerAnswer) {
-        return result = "Tie";
+        return result = "tie";
     }
     if (personAnswer == "rock") {
         if (computerAnswer == "scissors") {
-            result = "Win";
+            result = "win";
         } else {
-            result = "Lose";
+            result = "lose";
         }
     }
     if (personAnswer == "scissors") {
         if (computerAnswer == "rock") {
             result = "Lose";
         } else {
-            result = "Win";
+            result = "win";
         }
     }
     if (personAnswer == "paper") {
         if (computerAnswer == "rock") {
-            result = "Win";
+            result = "win";
         } else {
-            result = "Lose";
+            result = "lose";
         }
     }
     return result;
@@ -139,7 +152,7 @@ function post() {
     $(function() {
         var request;
         request = $.ajax({
-            url: 'http://192.168.0.15/php/insert_jresult.php',
+            url: serverUrl + 'php/insert_jresult.php',
             method: 'post',
             data: {
                 'janken_name': name,
@@ -150,17 +163,39 @@ function post() {
                 $("#result")
                     .html("Data has sent!!!")
                     .addClass("bg-success");
-                getScore();
+                get_all_score();
             }
         });
     });
 }
 
-function getScore(){
-    $.getJSON("http://192.168.0.15/php/ScoreTable.php", function(data) {
+function get_score(){
+    $.ajax({
+        url: serverUrl+'php/ScoreTable.php',
+        method: 'post',
+        dataType: 'json',
+        data: {
+            'janken_name': name,
+            'janken_token': j_token_val
+        },
+        success: function(data) {
+            if(data[0].score !== undefined){
+                document.getElementById("Score1").innerHTML = data[0].score;
+            }else{
+                document.getElementById("Score1").innerHTML = 0;
+            }
+        }
+    });
+}
+function get_all_score(){
+    $.getJSON(serverUrl+"php/ScoreTable.php", function(data) {
         $('tr.add').remove();
         for (var i in data) {
-            var tr = $("<tr class='add'>");
+            if(data[i].name == name){
+                var tr = $("<tr class='add current'>");
+            }else{
+                var tr = $("<tr class='add'>");
+            }
             var td_data = $("<td>").text(data[i].rank);
             tr.append(td_data);
             var td_name = $("<td>").text(data[i].name);
