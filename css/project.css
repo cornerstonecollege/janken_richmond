@@ -3,11 +3,13 @@
 		 height: 30%;
 		 -o-object-fit: contain;
 		 object-fit: contain;
+		 display: table-cell;
+		 vertical-align: middle;
 	 }
 
-.navHeader {
+#navHeader {
 	 	color: #ddd;
-		float: right;
+		float: center;
 	 }
 
 
@@ -41,7 +43,7 @@ body {
 	height: auto;
 }
 img {
-  margin: 10px;
+  margin: 20px;
   width: 20%;
 }
 p,span {
