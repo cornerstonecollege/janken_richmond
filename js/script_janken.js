@@ -133,7 +133,7 @@ function judge(personAnswer, computerAnswer) {
     }
     if (personAnswer == "scissors") {
         if (computerAnswer == "rock") {
-            result = "Lose";
+            result = "lose";
         } else {
             result = "win";
         }
