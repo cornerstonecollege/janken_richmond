@@ -1,3 +1,17 @@
+#navHeader {
+	 	color: #ddd;
+	 }
+.vcenter{
+  display: inline-block;
+  vertical-align: middle;
+  float: none;
+}
+.vcenter img{
+  display: inline-block;
+  vertical-align: middle;
+  float: none;
+  margin-bottom: 30px;
+}
 /* iPhone */
 @media only screen and (width:320px) and (device-width:320px) and (device-height:480px) and (orientation: landscape) {
 	body {
@@ -27,8 +41,8 @@ body {
   height: auto;
 }
 img {
-  margin: 10px;
-  width: 20%;
+  margin: 20px;
+  width: 150px;
 }
 p,span {
   font-size: 25px;
