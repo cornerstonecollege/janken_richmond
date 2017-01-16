@@ -108,10 +108,11 @@ function game(personAnswer) {
     document.getElementById("imgComputer").style.width = "30%";
     var element = document.getElementById('' + personAnswer).style.width = "100%";
     var result = judge(personAnswer, computerAnswer);
-    if (result == "Win") {
+    document.getElementById("imgResult").src = "img/" + result + ".png";
+    if (result == "win") {
         score = score + 100;
     }
-    if (result == "Lose") {
+    if (result == "lose") {
         score = score - 100;
     }
     document.getElementById("Score1").innerHTML = score;
@@ -121,27 +122,27 @@ function game(personAnswer) {
 function judge(personAnswer, computerAnswer) {
     var result = "";
     if (personAnswer == computerAnswer) {
-        return result = "Tie";
+        return result = "tie";
     }
     if (personAnswer == "rock") {
         if (computerAnswer == "scissors") {
-            result = "Win";
+            result = "win";
         } else {
-            result = "Lose";
+            result = "lose";
         }
     }
     if (personAnswer == "scissors") {
         if (computerAnswer == "rock") {
             result = "Lose";
         } else {
-            result = "Win";
+            result = "win";
         }
     }
     if (personAnswer == "paper") {
         if (computerAnswer == "rock") {
-            result = "Win";
+            result = "win";
         } else {
-            result = "Lose";
+            result = "lose";
         }
     }
     return result;
